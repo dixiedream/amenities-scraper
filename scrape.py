@@ -29,5 +29,5 @@ for data in whatToScrape:
     with open(f'./data/{filename}.json', 'w') as f:
         f.write(json.dumps(response['elements'], indent=2))
 
-    with open(f"./data/named_{filename}.json", 'w') as f:
+    with open(f"./data/named{filename.title()}.json", 'w') as f:
         f.write(json.dumps(createJSON(response['elements']), indent=2))
