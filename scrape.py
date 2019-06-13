@@ -1,3 +1,4 @@
+import anyconfig
 import overpass
 import json
 
@@ -12,12 +13,21 @@ def createJSON(elements):
             })
     return toReturn
 
+try:
+    whatToScrape = anyconfig.load("./config/whatToScrape.yml")
+except FileNotFoundError as e:
+    whatToScrape = anyconfig.load("./config/whatToScrape.example.yml")
+
 api = overpass.API()
-query = 'area(3600042602)->.searchArea; (node["amenity"="school"](area.searchArea););'
-response = api.Get(query, responseformat="json")
+for data in whatToScrape:
+    area = data['area']
+    amenity = data['amenity']
+    filename = data['filename']
+    query = f'area({area})->.searchArea; (node["amenity"="{amenity}"](area.searchArea););'
+    response = api.Get(query, responseformat="json")
 
-with open('./data/schools.json', 'w') as f:
-    f.write(json.dumps(response['elements'], indent=2))
+    with open(f'./data/{filename}.json', 'w') as f:
+        f.write(json.dumps(response['elements'], indent=2))
 
-with open('./data/namedSchools.json', 'w') as f:
-    f.write(json.dumps(createJSON(response['elements']), indent=2))
+    with open(f"./data/named_{filename}.json", 'w') as f:
+        f.write(json.dumps(createJSON(response['elements']), indent=2))
