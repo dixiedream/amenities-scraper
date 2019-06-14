@@ -17,7 +17,7 @@ Docker
 Run the script
 
 ```
-sh ./setup.sh
+sh ./start.sh
 ```
 
 or manually 
