@@ -2,9 +2,9 @@
 
 Python utility for scraping amenities with the OpenStreetMap API
 
-## Getting Started
+# Getting Started
 
-# Choose what to scrape
+### Choose what to scrape
 
 Create your whatToScrape.yml file like the example and place the file in the config folder
 
