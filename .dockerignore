@@ -1,0 +1,8 @@
+data
+*.sh
+.git
+.gitignore
+.vscode
+README.me
+LICENSE
+.dockerignore

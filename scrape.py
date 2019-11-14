@@ -23,7 +23,6 @@ for data in whatToScrape:
     area = data['area']
     amenity = data['amenity']
     filename = data['filename']
-    #query = f'area({area})->.searchArea; (node["amenity"="{amenity}"](area.searchArea););'
     query = f'area[name="{area}"]->.searchArea; (node["amenity"="{amenity}"](area.searchArea););'
     response = api.Get(query, responseformat="json")
 
