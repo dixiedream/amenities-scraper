@@ -10,6 +10,7 @@ whatToScrape.yml
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+!*.code-snippets
 
 ### macOS ###
 # General

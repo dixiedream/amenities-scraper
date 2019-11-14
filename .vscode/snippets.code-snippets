@@ -1,0 +1,16 @@
+{
+  "Amenity Yaml structure": {
+    "scope": "yaml,yml",
+    "prefix": "amenity",
+    "body": [
+      "- area: ${1:cityName}",
+      "  amenity: school",
+      "  filename: schools",
+      "",
+      "- area: ${1:cityName}",
+      "  amenity: hospitals",
+      "  filename: hospitals"
+    ],
+    "description": "Amenity Yaml structure"
+  }
+}
