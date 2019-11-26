@@ -21,11 +21,13 @@ except FileNotFoundError as e:
 api = overpass.API()
 for data in whatToScrape:
     area = data['area']
-    amenity = data['amenity']
+    amenities = data['amenities']
     filename = data['filename']
-    query = f'area[name="{area}"]->.searchArea; (node["amenity"="{amenity}"](area.searchArea););'
-    response = api.Get(query, responseformat="json")
+    query = f'area[name="{area}"]->.searchArea; '
+    for amenity in amenities:
+        query = query + f'(node["amenity"="{amenity}"](area.searchArea);); '
 
+    response = api.Get(query, responseformat="json")
     with open(f'./data/{filename}.json', 'w') as f:
         f.write(json.dumps(response['elements'], indent=2))
 

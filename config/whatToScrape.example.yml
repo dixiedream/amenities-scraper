@@ -1,3 +1,4 @@
-- area: Firenze
-  amenity: school
-  filename: schools
+- area: Perugia
+  amenities: 
+    - school
+  filename: perugia
